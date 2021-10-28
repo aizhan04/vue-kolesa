@@ -1,0 +1,38 @@
+$dark: #1c1819;
+$white: #fff;
+$blue: #2a81dd;
+$red: red;
+$green: #64bd38;
+$white-green: #eff8eb;
+$white-yellow: #fffae7;
+$white-blue: #e9f2fb;
+$tabs: #d6ecfb;
+$search: #f2f2f3;
+$grey: #888b94;
+
+@mixin br($r) {
+    border-radius: $r;
+}
+@mixin flex-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin short-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin font-small {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+@mixin font-bold {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+}
