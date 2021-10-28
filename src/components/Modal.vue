@@ -82,7 +82,7 @@
 					</p>
 				</div>
 				<div class="question">
-					<h3 class="question__title">Как выбрать размер:</h3>
+					<h3 class="question__title">Как выбрать размер?:</h3>
 					<p class="question__txt">Написать дяде Рику для уточнения.</p>
 				</div>
 			</div>
