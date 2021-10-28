@@ -15,110 +15,6 @@
 			</div>
 			<User :user="user"></User>
 		</div>
-		<!-- <div class="section_content_wrapper">
-			<div class="sidebar_wrapper">
-				<ul>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Оргсхема</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Kolesa Team</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Kolesa Shop</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Картина компании</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Новости</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Education</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Guidelines</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">Библиотека</a>
-					</li>
-					<li>
-						<a class="sidebar_wrapper__paragraph" href="/">FAQ</a>
-					</li>
-				</ul>
-			</div>
-			<div class="main_content">
-				<div>
-					<img
-						class="main_content__banner"
-						src="@/assets/banner.jpg"
-						alt="sale"
-					/>
-					<div class="main_content__hot_btn">
-						<button class="main_content__plus color1">
-							<img src="@/assets/plus.svg" alt="plus" />
-							<span class="main_content__text">Получить баллы</span>
-						</button>
-						<button class="main_content__question color2">
-							<img src="@/assets/question.svg" alt="question" />
-							<span class="main_content__text">Как получить баллы</span>
-						</button>
-						<button class="main_content__gift color3">
-							<img src="@/assets/podarok.svg" alt="gift" />
-							<span class="main_content__text">Подарить баллы</span>
-						</button>
-					</div>
-				</div>
-				<div class="color">
-					<div class="color__item">
-						<input id="blue" type="radio" name="name" />
-						<label class="js-color" data-id="allGoods" for="blue"
-							>Все товары</label
-						>
-					</div>
-					<div class="color__item">
-						<input id="beige" type="radio" name="name" />
-						<label class="js-color" data-id="clothes" id="color-2" for="beige"
-							>Одежда</label
-						>
-					</div>
-					<div class="color__item">
-						<input id="grey" type="radio" name="name" />
-						<label
-							class="js-color"
-							data-id="accessories"
-							id="color-3"
-							for="grey"
-							>Аксессуары</label
-						>
-					</div>
-				</div>
-				<div class="main-сatalog catalog">
-					<div v-for="item in 3" :key="item" class="catalog__item">
-						<div class="catalog__image">
-							<img
-								src="@/assets/futbolka.jpg"
-								alt="Shirt"
-								width="330"
-								height="330"
-							/>
-							<span class="catalog__badge">new</span>
-						</div>
-						<div class="catalog__description">
-							<div class="catalog__price">220 баллов</div>
-							<h3 class="catalog__title">Футболка "Эволюционируй или cдохни</h3>
-							<p class="catalog__size">Размеры S/M/L</p>
-							<button
-								@click="openModal()"
-								class="button catalog__button catalog__button_blue"
-							>
-								Заказать
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 		<section class="main">
 			<div class="container">
 				<div class="main__wrapper">
@@ -132,7 +28,7 @@
 							/>
 						</div>
 						<HotButtons></HotButtons>
-						<!-- <MyFilter v-model="activeTabKey" :tabs="tabs"></MyFilter> -->
+						<MyFilter v-model="activeTabKey" :tabs="tabs"></MyFilter>
 						<div class="main__goods main__goods--active">
 							<CardItem
 								v-for="good in filterItems"
@@ -162,7 +58,7 @@
 			@close="closeModal"
 		></Modal>
 		<!-- Modal 2 -->
-		<div class="overlay__thanks">
+		<!-- <div class="overlay__thanks">
 			<div class="thanks">
 				<h3 class="thanks__title">Заказ успешно оформлен!</h3>
 				<p class="thanks__descr">
@@ -170,7 +66,7 @@
 				</p>
 				<button class="button__thanks">Круто, вернуться в Kolesa Shop</button>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </template>
 <script>
@@ -182,53 +78,55 @@ import User from '@/components/User.vue';
 import HotButtons from '@/components/HotButtons.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import Footer from '@/components/Footer.vue';
-// import MyFilter from '@/components/MyFilter.vue';
+import MyFilter from '@/components/MyFilter.vue';
 import CardItem from '@/components/CardItem.vue';
 
 export default {
-	data: () => ({
-		isShowModal: false,
-		modalData: {},
-		value:
-			'',
-		user: {},
-		// eslint-disable-next-line no-dupe-keys
-		modalData: {},
-		activeTabKey:
-			'all',
-	}),
 	name:
 		'App',
 	components: {
 		Modal,
-		Search,
 		User,
-		HotButtons,
+		Search,
 		Sidebar,
-		Footer,
-		// MyFilter,
+		HotButtons,
+		MyFilter,
 		CardItem,
+		Footer,
 	},
-	tabs: [
-		{
-			key:
+	data() {
+		return {
+			value:
+				'',
+			isActive: false,
+			isShowModal: false,
+			activeTabKey:
 				'all',
-			name:
-				'Все товары',
-		},
-		{
-			key:
-				'clothes',
-			name:
-				'Одежда',
-		},
-		{
-			key:
-				'accesories',
-			name:
-				'Аксессуары',
-		},
-	],
+			modalData: {},
+			score: 500,
+			tabs: [
+				{
+					key:
+						'all',
+					name:
+						'Все товары',
+				},
+				{
+					key:
+						'clothes',
+					name:
+						'Одежда',
+				},
+				{
+					key:
+						'accesories',
+					name:
+						'Аксессуары',
+				},
+			],
+			user: [],
+		};
+	},
 	computed: {
 		allItems() {
 			return [
@@ -381,9 +279,8 @@ export default {
 					.score
 				< price
 			) {
-				// eslint-disable-next-line no-alert
 				alert(
-					'денег нет, иди работай',
+					'отказано',
 				);
 			} else {
 				this.user.score -= price;
@@ -398,7 +295,6 @@ export default {
 			this.search = data;
 		},
 		showCost() {
-			// eslint-disable-next-line no-alert
 			alert(
 				this
 					.score,
@@ -410,13 +306,4 @@ export default {
 
 <style lang='scss'>
 @import '@/style.css/style.scss';
-
-// #app {
-// 	font-family: Avenir, Helvetica, Arial, sans-serif;
-// 	-webkit-font-smoothing: antialiased;
-// 	-moz-osx-font-smoothing: grayscale;
-// 	text-align: center;
-// 	color: #2c3e50;
-// 	margin-top: 60px;
-// }
 </style>
