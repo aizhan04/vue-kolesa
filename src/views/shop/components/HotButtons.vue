@@ -4,7 +4,7 @@
 			<img class="btn__howto-img" src="@/assets/plus.svg" alt="Плюс" />
 			Получить баллы</a
 		>
-		<a class="btn__howto btn__howto-yellow" href="#"
+		<a class="btn__howto btn__howto-yellow" href="#" @click.prevent="goToPage"
 			><img
 				class="btn__howto-img"
 				src="@/assets/question.svg"
@@ -25,5 +25,15 @@
 export default {
 	name:
 		'HotButtons',
+	methods: {
+		goToPage() {
+			this.$router.push(
+				{
+					name:
+						'Score',
+				},
+			);
+		},
+	},
 };
 </script>

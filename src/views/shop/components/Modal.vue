@@ -3,20 +3,21 @@
 		<div class="modal" @click.stop>
 			<div class="modal__left">
 				<img class="modal__img" :src="data.mainImage" :alt="data.alt" />
-				<div class="modal__thumbnails"></div>
 			</div>
 			<div class="modal__right">
 				<div class="modal__title">{{ data.title }}</div>
 				<div class="modal__item-wrapper">
 					<div class="modal__item-info">
 						<div class="modal__item-price">{{ data.price }} Баллов</div>
-						<a href="#" class="main__btn main__btn--yellow" @click="order"
-							>Попросить 50 баллов</a
+						<a href="#" class="main__btn main__btn--small" @click="order"
+							>Заказать</a
 						>
 					</div>
 					<div class="modal__item-balance">
 						<div class="modal__item-supheader">Твой баланс:</div>
-						<div class="modal__item-points">50 баллов</div>
+						<div class="modal__item-points">
+							{{ this.$store.state.userInfo.score }} баллов
+						</div>
 					</div>
 				</div>
 				<form class="modal__form" action="#">
@@ -44,7 +45,7 @@
 								id="gray"
 								name="colors"
 							/>
-							<label class="label__color" for="grey">Серый</label>
+							<label class="label__color" for="gray">Серый</label>
 						</div>
 					</div>
 					<div class="sizes">
@@ -82,7 +83,7 @@
 					</p>
 				</div>
 				<div class="question">
-					<h3 class="question__title">Как выбрать размер?:</h3>
+					<h3 class="question__title">Как выбрать размер:</h3>
 					<p class="question__txt">Написать дяде Рику для уточнения.</p>
 				</div>
 			</div>
@@ -119,8 +120,24 @@ export default {
 			);
 		},
 		order() {
-			this.$emit(
-				'order',
+			const {
+				score,
+			} = this.$store.state.userInfo;
+			if (
+				score
+					- this
+						.data
+						.price
+				<= 0
+			) {
+				// eslint-disable-next-line
+				alert(
+					'Недостаточно средств',
+				);
+				return;
+			}
+			this.$store.commit(
+				'setNewScore',
 				this
 					.data
 					.price,
