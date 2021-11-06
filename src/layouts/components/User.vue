@@ -22,24 +22,16 @@
 import { mapState } from 'vuex';
 
 export default {
-	name:
-		'User',
+	name: 'User',
 	computed: {
-		...mapState(
-			{
-				userInfo:
-					'userInfo',
-			},
-		),
+		...mapState(['userInfo']),
 	},
 	mounted() {
 		this.fetchUser();
 	},
 	methods: {
 		fetchUser() {
-			this.$store.dispatch(
-				'fetchUserInfo',
-			);
+			this.$store.dispatch('fetchUserInfo');
 		},
 	},
 };

@@ -16,8 +16,7 @@
 
 <script>
 export default {
-	name:
-		'Search',
+	name: 'Search',
 	props: {
 		modelValue: String,
 	},

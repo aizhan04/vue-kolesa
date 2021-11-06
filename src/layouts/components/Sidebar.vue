@@ -22,67 +22,48 @@
 
 <script>
 export default {
-	name:
-		'Sidebar',
+	name: 'Sidebar',
 	data() {
 		return {
 			routes: [
 				{
-					link:
-						'/',
-					label:
-						'Оргсхема',
+					link: '/',
+					label: 'Оргсхема',
 					isExact: true,
 				},
 				{
-					link:
-						'/about',
-					label:
-						'Kolesa <span>Team</span>',
+					link: '/about',
+					label: 'Kolesa <span>Team</span>',
 					isExact: true,
 				},
 				{
-					link:
-						'/shop',
-					label:
-						'Kolesa Shop',
+					link: '/shop',
+					label: 'Kolesa Shop',
 					isExact: false,
 				},
 				{
-					link:
-						'#',
-					label:
-						'Картина компании',
+					link: '#',
+					label: 'Картина компании',
 				},
 				{
-					link:
-						'#',
-					label:
-						'Новости',
+					link: '#',
+					label: 'Новости',
 				},
 				{
-					link:
-						'#',
-					label:
-						'Education',
+					link: '#',
+					label: 'Education',
 				},
 				{
-					link:
-						'#',
-					label:
-						'Guidelines',
+					link: '#',
+					label: 'Guidelines',
 				},
 				{
-					link:
-						'#',
-					label:
-						'Библиотека',
+					link: '#',
+					label: 'Библиотека',
 				},
 				{
-					link:
-						'#',
-					label:
-						'FAQ',
+					link: '#',
+					label: 'FAQ',
 				},
 			],
 		};

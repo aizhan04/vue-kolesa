@@ -14,13 +14,10 @@
 
 <script>
 export default {
-	name:
-		'MyFilter',
+	name: 'MyFilter',
 	model: {
-		event:
-			'change',
-		prop:
-			'activeTabKey',
+		event: 'change',
+		prop: 'activeTabKey',
 	},
 	props: {
 		activeTabKey: {
@@ -33,13 +30,8 @@ export default {
 		},
 	},
 	methods: {
-		myFilter(
-			tab,
-		) {
-			this.$emit(
-				'change',
-				tab.key,
-			);
+		myFilter(tab) {
+			this.$emit('change', tab.key);
 		},
 	},
 };

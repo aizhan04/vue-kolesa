@@ -23,16 +23,12 @@
 
 <script>
 export default {
-	name:
-		'HotButtons',
+	name: 'HotButtons',
 	methods: {
 		goToPage() {
-			this.$router.push(
-				{
-					name:
-						'Score',
-				},
-			);
+			this.$router.push({
+				name: 'Score',
+			});
 		},
 	},
 };

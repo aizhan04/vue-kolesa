@@ -42,8 +42,7 @@ import CardItem from './components/CardItem.vue';
 import Modal from './components/Modal.vue';
 
 export default {
-	name:
-		'App',
+	name: 'App',
 	components: {
 		Modal,
 		HotButtons,
@@ -54,95 +53,41 @@ export default {
 		return {
 			isActive: false,
 			isShowModal: false,
-			activeTabKey:
-				'all',
+			activeTabKey: 'all',
 			modalData: {},
 			tabs: [
 				{
-					key:
-						'all',
-					name:
-						'Все товары',
+					key: 'all',
+					name: 'Все товары',
 				},
 				{
-					key:
-						'clothes',
-					name:
-						'Одежда',
+					key: 'clothes',
+					name: 'Одежда',
 				},
 				{
-					key:
-						'accesories',
-					name:
-						'Аксессуары',
+					key: 'accesories',
+					name: 'Аксессуары',
 				},
 			],
 		};
 	},
 	computed: {
 		allItems() {
-			return [
-				...this
-					.clothes,
-				...this
-					.accesories,
-			].sort(
-				(
-					a,
-					b,
-				) => Number(
-					b.span,
-				)
-					- Number(
-						a.span,
-					),
+			return [...this.clothes, ...this.accesories].sort(
+				(a, b) => Number(b.span) - Number(a.span)
 			);
 		},
 		filterItems() {
-			if (
-				this
-					.activeTabKey
-				=== 'clothes'
-			) {
-				return [
-					...this
-						.$store
-						.state
-						.clothes,
-				];
+			if (this.activeTabKey === 'clothes') {
+				return [...this.$store.state.clothes];
 			}
-			if (
-				this
-					.activeTabKey
-				=== 'accesories'
-			) {
-				return [
-					...this
-						.$store
-						.state
-						.accesories,
-				];
+			if (this.activeTabKey === 'accesories') {
+				return [...this.$store.state.accesories];
 			}
 			return [
-				...this
-					.$store
-					.state
-					.clothes,
-				...this
-					.$store
-					.state
-					.accesories,
-			].sort(
-				(
-					a,
-					b,
-				) => Number(
-					b.span,
-				)
-					- Number(
-						a.span,
-					),
-			);
+				...this.$store.state.clothes,
+				...this.$store.state.accesories,
+			].sort((a, b) => Number(b.span) - Number(a.span));
 		},
 	},
 	watch: {
@@ -155,61 +100,29 @@ export default {
 		this.fetchAcc();
 	},
 	methods: {
-		openCard(
-			data,
-		) {
-			this.openModal();
+		openCard(data) {
+			this.isShowModal = true;
 			this.modalData = data;
 		},
-		openModal() {
-			this.isShowModal = true;
-		},
+
 		closeModal() {
 			this.isShowModal = false;
 		},
-		getImgUrl(
-			item,
-		) {
-			// eslint-disable-next-line global-require,import/no-dynamic-require,import/extensions
+		getImgUrl(item) {
 			return require(`@/assets/${item}`);
 		},
-		myFilter(
-			tab,
-		) {
-			this.activeTabKey =				tab.key;
-		},
-		handleChange(
-			tab,
-		) {
-			this.activeTabKey =				tab.key;
-		},
-		handleShowModal(
-			cardItem,
-		) {
+		handleShowModal(cardItem) {
 			this.aciveCardItem = cardItem;
 			this.isShowModal = true;
 		},
-		setSearch(
-			data,
-		) {
+		setSearch(data) {
 			this.search = data;
 		},
-		showCost() {
-			// eslint-disable-next-line
-			alert(
-				this
-					.score,
-			);
-		},
 		fetchClothes() {
-			this.$store.dispatch(
-				'fetchClothesInfo',
-			);
+			this.$store.dispatch('fetchClothesInfo');
 		},
 		fetchAcc() {
-			this.$store.dispatch(
-				'fetchAccInfo',
-			);
+			this.$store.dispatch('fetchAccInfo');
 		},
 	},
 };

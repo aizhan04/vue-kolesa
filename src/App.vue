@@ -45,8 +45,7 @@ import Sidebar from '@/layouts/components/Sidebar.vue';
 import Footer from '@/layouts/components/Footer.vue';
 
 export default {
-	name:
-		'App',
+	name: 'App',
 	components: {
 		User,
 		Search,
@@ -55,8 +54,7 @@ export default {
 	},
 	data() {
 		return {
-			value:
-				'',
+			value: '',
 		};
 	},
 	watch: {
@@ -65,22 +63,11 @@ export default {
 		},
 	},
 	methods: {
-		getImgUrl(
-			item,
-		) {
+		getImgUrl(item) {
 			// eslint-disable-next-line global-require,import/no-dynamic-require,import/extensions
 			return require(`./assets/${item}`);
 		},
-		showCost() {
-			// eslint-disable-next-line
-			alert(
-				this
-					.score,
-			);
-		},
-		updateUser(
-			data,
-		) {
+		updateUser(data) {
 			this.user = data;
 		},
 	},

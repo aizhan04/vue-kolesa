@@ -101,8 +101,7 @@
 
 <script>
 export default {
-	name:
-		'Modal',
+	name: 'Modal',
 	props: {
 		isOpen: Boolean,
 		data: Object,
@@ -115,33 +114,7 @@ export default {
 	},
 	methods: {
 		closeModal() {
-			this.$emit(
-				'close',
-			);
-		},
-		order() {
-			const {
-				score,
-			} = this.$store.state.userInfo;
-			if (
-				score
-					- this
-						.data
-						.price
-				<= 0
-			) {
-				// eslint-disable-next-line
-				alert(
-					'Недостаточно средств',
-				);
-				return;
-			}
-			this.$store.commit(
-				'setNewScore',
-				this
-					.data
-					.price,
-			);
+			this.$emit('close');
 		},
 	},
 };
