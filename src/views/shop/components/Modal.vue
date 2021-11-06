@@ -3,20 +3,21 @@
 		<div class="modal" @click.stop>
 			<div class="modal__left">
 				<img class="modal__img" :src="data.mainImage" :alt="data.alt" />
-				<div class="modal__thumbnails"></div>
 			</div>
 			<div class="modal__right">
 				<div class="modal__title">{{ data.title }}</div>
 				<div class="modal__item-wrapper">
 					<div class="modal__item-info">
 						<div class="modal__item-price">{{ data.price }} Баллов</div>
-						<a href="#" class="main__btn main__btn--yellow" @click="order"
-							>Попросить 50 баллов</a
+						<a href="#" class="main__btn main__btn--small" @click="order"
+							>Заказать</a
 						>
 					</div>
 					<div class="modal__item-balance">
 						<div class="modal__item-supheader">Твой баланс:</div>
-						<div class="modal__item-points">50 баллов</div>
+						<div class="modal__item-points">
+							{{ this.$store.state.userInfo.score }} баллов
+						</div>
 					</div>
 				</div>
 				<form class="modal__form" action="#">
@@ -44,7 +45,7 @@
 								id="gray"
 								name="colors"
 							/>
-							<label class="label__color" for="grey">Серый</label>
+							<label class="label__color" for="gray">Серый</label>
 						</div>
 					</div>
 					<div class="sizes">
@@ -100,8 +101,7 @@
 
 <script>
 export default {
-	name:
-		'Modal',
+	name: 'Modal',
 	props: {
 		isOpen: Boolean,
 		data: Object,
@@ -114,17 +114,7 @@ export default {
 	},
 	methods: {
 		closeModal() {
-			this.$emit(
-				'close',
-			);
-		},
-		order() {
-			this.$emit(
-				'order',
-				this
-					.data
-					.price,
-			);
+			this.$emit('close');
 		},
 	},
 };

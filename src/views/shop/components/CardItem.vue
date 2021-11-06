@@ -22,13 +22,10 @@
 
 <script>
 export default {
-	name:
-		'CardItem',
+	name: 'CardItem',
 	model: {
-		event:
-			'show',
-		prop:
-			'isShowModal',
+		event: 'show',
+		prop: 'isShowModal',
 	},
 	props: {
 		good: {
@@ -38,18 +35,11 @@ export default {
 		isShowModal: Boolean,
 	},
 	methods: {
-		openCard(
-			data,
-		) {
-			this.$emit(
-				'get',
-				data,
-			);
+		openCard(data) {
+			this.$emit('get', data);
 		},
 		openModal() {
-			this.$emit(
-				'show',
-			);
+			this.$emit('show');
 		},
 	},
 };
